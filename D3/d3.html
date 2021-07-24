@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>D3 TEST</title>
+    </head>
+    <body>
+        <svg width="500" height="500"></svg>
+        <script src="http://d3js.org/d3.v3.js"></script>
+        <script>
+            const data = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
+            const color = ['skyblue', 'blue', 'lime', 'red', 'yellowgreen', 'violet', 'blueviolet', 'chocolate', 'darkgreen', 'yellow']
+
+            const svg = d3.select('svg');
+            console.log(svg)
+
+            //Bar 형식
+            //직사각형 도표
+            //height: 각 그래프 높이
+            //width: 각 그래프 넓이
+            //x: 각 그래프 그려질 x좌표
+            //y: 각 그래프 그려질 y좌표
+            svg.selectAll('bar')
+                .data(data)
+                .enter().append('rect')
+                .attr('fill', (d, i) => {return color[i]})
+                .attr('height', (d, i) => {return d})
+                .attr('width', 40)
+                .attr('x', (d, i) => {return 50 * i})
+                .attr('y', (d, i) => {return 100 - data[i]})
+        </script>
+    </body>
+</html>
